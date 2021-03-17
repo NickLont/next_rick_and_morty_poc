@@ -20,15 +20,16 @@ const PeoplePage = ({ character }) => {
     },
     root: {
       maxWidth: 345,
+      minWidth: 345,
     },
     media: {
-      height: 140,
+      height: 340,
+      objectFit: "cover",
     },
   })
 
   const router = useRouter()
   const { pid } = router.query
-  console.log("character: ", character)
   const classes = useStyles()
 
   return (
@@ -37,27 +38,35 @@ const PeoplePage = ({ character }) => {
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image="/static/images/cards/contemplative-reptile.jpg"
+            image={character.image}
             title="Contemplative Reptile"
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               {character.name}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              Lizards are a widespread group of squamate reptiles, with over
-              6,000 species, ranging across all continents except Antarctica
+            <Typography variant="h6" component="p">
+              <span style={{ fontWeight: "bold" }}>Gender: </span>
+              {character.gender}
+            </Typography>
+            <Typography variant="h6" component="p">
+              <span style={{ fontWeight: "bold" }}>Species: </span>
+              {character.species}
+            </Typography>
+            <Typography variant="h6" component="p">
+              <span style={{ fontWeight: "bold" }}>Status: </span>
+              {character.status}
+            </Typography>
+            <Typography variant="h6" component="p">
+              <span style={{ fontWeight: "bold" }}>Location: </span>
+              {character.location.name}
+            </Typography>
+            <Typography variant="h6" component="p">
+              <span style={{ fontWeight: "bold" }}>Origin: </span>
+              {character.origin.name}
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            Share
-          </Button>
-          <Button size="small" color="primary">
-            Learn More
-          </Button>
-        </CardActions>
       </Card>
     </div>
   )
